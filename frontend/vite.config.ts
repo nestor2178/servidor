@@ -13,5 +13,5 @@ export default defineConfig({
     outDir: "dist", // Directorio donde se generan los archivos de producción
     sourcemap: false, // Opcional: desactiva los mapas de origen para producción
   },
-  base: "/", // Si se sirve desde la raíz. Ajustar si Render usa una subruta
+  base: "./", // Si se sirve desde la raíz. Ajustar si Render usa una subruta
 });
