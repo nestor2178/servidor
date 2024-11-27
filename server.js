@@ -1,3 +1,4 @@
+//server.js
 import dotenv from 'dotenv';
 import 'express-async-errors';
 import express from 'express';
@@ -27,11 +28,6 @@ app.use(logger);
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
-
-// Sirve archivos estáticos desde 'dist'
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-app.use("/", express.static(path.join(__dirname, "dist")));
 
 // Rutas principales de la aplicación
 import rootRoutes from './routes/root.js';
