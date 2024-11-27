@@ -28,8 +28,10 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
 
-// Elimina esta línea si no necesitas servir archivos estáticos
-// app.use("/", express.static(path.join(__dirname, "dist")));
+// Configurar el directorio para archivos estáticos
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Rutas principales de la aplicación
 import rootRoutes from './routes/root.js';
