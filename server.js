@@ -1,4 +1,3 @@
-//server.js
 import dotenv from 'dotenv';
 import 'express-async-errors';
 import express from 'express';
@@ -29,6 +28,9 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
 
+// Elimina esta línea si no necesitas servir archivos estáticos
+// app.use("/", express.static(path.join(__dirname, "dist")));
+
 // Rutas principales de la aplicación
 import rootRoutes from './routes/root.js';
 import authRoutes from './routes/authRoutes.js';
@@ -39,11 +41,6 @@ app.use("/", rootRoutes);
 app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
 app.use("/notes", noteRoutes);
-
-// Sirve index.html para manejar rutas desconocidas
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
-});
 
 // Manejador de errores
 app.use(errorHandler);
