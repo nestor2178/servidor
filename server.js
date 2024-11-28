@@ -46,7 +46,7 @@ app.use("/notes", noteRoutes);
 
 // Sirve index.html para manejar rutas desconocidas
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
+  res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
 });
 
 // Manejador de errores
