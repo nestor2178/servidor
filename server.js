@@ -28,10 +28,10 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
 
-// Configurar el directorio para archivos estáticos
+// Sirve archivos estáticos desde 'dist'
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-app.use(express.static(path.join(__dirname, 'public')));
+app.use("/", express.static(path.join(__dirname, "dist")));
 
 // Rutas principales de la aplicación
 import rootRoutes from './routes/root.js';
@@ -43,6 +43,11 @@ app.use("/", rootRoutes);
 app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
 app.use("/notes", noteRoutes);
+
+// Sirve index.html para manejar rutas desconocidas
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
+});
 
 // Manejador de errores
 app.use(errorHandler);
