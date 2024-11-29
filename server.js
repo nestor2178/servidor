@@ -15,7 +15,7 @@ dotenv.config();
 mongoose.set("strictQuery", false);
 
 const app = express();
-const PORT = process.env.PORT || 3500;
+const PORT = process.env.PORT || 10000;
 
 console.log(process.env.NODE_ENV);
 
