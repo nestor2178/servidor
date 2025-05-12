@@ -63,8 +63,14 @@ const createNewNote = asyncHandler(async (req, res) => {
 
   try {
     // Obtener el usuario del token
-    const user = await User.findOne({ username: req.user }).exec();
-    
+    // Usa el usuario enviado o el del token
+const userId = req.body.user || req.user;
+
+const user = await User.findById(userId).exec();
+
+if (!user) {
+  return res.status(404).json({ message: 'Usuario no encontrado' });
+}
     if (!user) {
       return res.status(404).json({ message: 'Usuario no encontrado' });
     }
