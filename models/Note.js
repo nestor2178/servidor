@@ -24,7 +24,7 @@ const noteSchema = new mongoose.Schema(
       maxlength: 1300,
       trim: true,
       match:
-        /^[\w\sáéíóúüñÁÉÍÓÚÜÑ!@#$%.,?"'<>\/\\=\-():[\]{}*+^%$#@!|`~\n\r\t=.,;]{10,1300}$/,
+        /^[\w\sáéíóúüñÁÉÍÓÚÜÑ!@#<span class="math-inline">%\.,?"'<\>\\/\\\\\=\\\-\(\)\:\[\\\]\{\}\*\+^%</span>#@!|`~&\n\r\t=.,;]{10,1300}$/,
     },
     completed: {
       type: Boolean,

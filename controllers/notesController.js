@@ -75,9 +75,6 @@ const createNewNote = asyncHandler(async (req, res) => {
     if (!user) {
       return res.status(404).json({ message: "Usuario no encontrado" });
     }
-    if (!user) {
-      return res.status(404).json({ message: "Usuario no encontrado" });
-    }
 
     // Verificar duplicados (insensible a mayúsculas/minúsculas)
     const duplicate = await Note.findOne({
@@ -199,11 +196,9 @@ const updateNote = asyncHandler(async (req, res) => {
         .lean()
         .exec();
       if (!newAssignedUserExists) {
-        return res
-          .status(400)
-          .json({
-            message: "El usuario al que se intenta asignar la nota no existe.",
-          });
+        return res.status(400).json({
+          message: "El usuario al que se intenta asignar la nota no existe.",
+        });
       }
       console.log(
         `Reasignando nota ${note._id} del usuario ${note.user} al usuario ${assignedUserId}`
